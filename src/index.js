@@ -16,13 +16,35 @@ import ReactDOM from 'react-dom';
 // }
 
 class App extends React.Component {
-  render(){
+  constructor(props) {
+    super(props);
+    this.state = {
+      latitude: null,
+      longitude: null,
+      errorMessage: ''
+    }
+
     window.navigator.geolocation.getCurrentPosition(
-          (position) => {console.log(position)},
-          (error) => { console.log(error)}
-        );
+      (position) => {
+        this.setState({latitude: position.coords.latitude})
+        this.setState({longitude: position.coords.longitude})
+      
+      },
+      (error) => { 
+        this.setState({ errorMessage: error.message })
+      }
+    );
+  }
+
+  render(){
     return (
-      <div>You are in the northern Hemisphere.</div>
+      <div>
+        {this.state.latitude}
+        <br />
+        {this.state.longitude}
+        <br />
+        {this.state.errorMessage}
+      </div>
     )
   }
 }
