@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const App = () => {
+// const App = () => {
 
-  window.navigator.geolocation.getCurrentPosition(
-    (position) => {console.log(position)},
-    (error) => { console.log(error)}
-  );
-  return (
-    <div>
-      Hello World! 
-    </div>
-  )
+//   //getting user location
+//   window.navigator.geolocation.getCurrentPosition(
+//     (position) => {console.log(position)},
+//     (error) => { console.log(error)}
+//   );
+//   return (
+//     <div>
+//       latitude:  
+//     </div>
+//   )
+// }
+
+class App extends React.Component {
+  render(){
+    window.navigator.geolocation.getCurrentPosition(
+          (position) => {console.log(position)},
+          (error) => { console.log(error)}
+        );
+    return (
+      <div>You are in the northern Hemisphere.</div>
+    )
+  }
 }
 
 ReactDOM.render(<App />, document.querySelector('#root'));
