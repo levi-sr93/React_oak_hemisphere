@@ -1,0 +1,20 @@
+.Northern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: snow;
+}
+
+img {
+  width: 200px;
+  height: 200px;
+}
+
+.Southern {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: darkkhaki;
+}
