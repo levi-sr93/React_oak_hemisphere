@@ -1,14 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      latitude: null,
-      longitude: null,
-      errorMessage: ''
-    }
+  
+  state = {
+    latitude: null,
+    errorMessage: ''
+  }
 
+  //will automatically be called one time when the component first gets rendered in the screen. 
+  componentDidMount(){
+    //getting user location
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({latitude: position.coords.latitude})
@@ -19,6 +20,10 @@ class App extends React.Component {
         this.setState({ errorMessage: error.message })
       }
     );
+  }
+
+  componentDidUpdate(){
+    console.log('Component did update');
   }
 
   render() {
