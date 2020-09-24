@@ -1,20 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-// const App = () => {
-
-//   //getting user location
-//   window.navigator.geolocation.getCurrentPosition(
-//     (position) => {console.log(position)},
-//     (error) => { console.log(error)}
-//   );
-//   return (
-//     <div>
-//       latitude:  
-//     </div>
-//   )
-// }
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -36,16 +21,17 @@ class App extends React.Component {
     );
   }
 
-  render(){
-    return (
-      <div>
-        {this.state.latitude}
-        <br />
-        {this.state.longitude}
-        <br />
-        {this.state.errorMessage}
-      </div>
-    )
+  render() {
+      if(this.state.errorMessage && !this.state.latitude) {
+        return <div>{this.state.errorMessage}</div>
+      }
+
+      if(!this.state.errorMessage && this.state.latitude) {
+        return <div>{this.state.latitude}</div>
+      }
+      else {
+        return <div>Loading...</div>
+      }
   }
 }
 
